@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok_clone_v2/features/authentication/email_screen.dart';
+import 'package:tiktok_clone_v2/features/authentication/widgets/form_button.dart';
 
 import '../../constants/gaps.dart';
 import '../../constants/sizes.dart';
@@ -84,28 +86,9 @@ class _UsernameScreenState extends State<UsernameScreen> {
               ),
             ),
             Gaps.v20,
-            FractionallySizedBox(
-              widthFactor: 1,
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                padding: const EdgeInsets.symmetric(
-                  vertical: Sizes.size12,
-                ),
-                decoration: BoxDecoration(
-                  color: _username.isEmpty
-                      ? Colors.grey.shade400
-                      : Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(Sizes.size5),
-                ),
-                child: const Text(
-                  "Next",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
+            FormButton(
+              disabled: _username.isEmpty,
+              widget: const EmailScreen(),
             ),
           ],
         ),
