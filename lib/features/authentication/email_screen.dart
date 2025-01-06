@@ -23,7 +23,7 @@ class EmailScreen extends StatelessWidget {
           children: [
             Gaps.v30,
             const Text(
-              "Create username",
+              "Create email",
               style: TextStyle(
                 fontSize: Sizes.size24,
                 fontWeight: FontWeight.w700,
@@ -35,6 +35,47 @@ class EmailScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: Sizes.size16,
                 color: Colors.black54,
+              ),
+            ),
+            Gaps.v20,
+            TextField(
+              cursorColor: Theme.of(context).primaryColor,
+              decoration: InputDecoration(
+                hintText: "Username",
+                hintStyle: const TextStyle(
+                  color: Colors.black54,
+                ),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.grey.shade400,
+                  ),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.grey.shade400,
+                  ),
+                ),
+              ),
+            ),
+            Gaps.v20,
+            FractionallySizedBox(
+              widthFactor: 1,
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: Sizes.size16,
+                ),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(Sizes.size5),
+                ),
+                child: const Text(
+                  "Next",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
             ),
           ],
