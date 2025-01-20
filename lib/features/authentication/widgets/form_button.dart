@@ -17,10 +17,13 @@ class FormButton extends StatelessWidget {
   });
 
   void _onTap(BuildContext context) {
-    if (widget == null) {
-      if (callback != null) {
-        callback!();
+    if (callback != null) {
+      if (!callback!()) {
+        return;
       }
+    }
+
+    if (widget == null) {
       return;
     }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone_v2/features/authentication/widgets/form_button.dart';
+import 'package:tiktok_clone_v2/features/onboarding/interests_screen.dart';
 
 import '../../constants/gaps.dart';
 import '../../constants/sizes.dart';
@@ -16,14 +17,14 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
 
   Map<String, String> userData = {};
 
-  void _onSubmitTap() {
-    print("submitted");
+  bool _onSubmitTap() {
     if (_formKey.currentState != null) {
       if (_formKey.currentState!.validate()) {
         _formKey.currentState!.save();
-        print(userData);
+        return true;
       }
     }
+    return false;
   }
 
   @override
@@ -106,6 +107,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                 disabled: false,
                 text: "Log in",
                 callback: _onSubmitTap,
+                widget: const InterestsScreen(),
               ),
             ],
           ),
