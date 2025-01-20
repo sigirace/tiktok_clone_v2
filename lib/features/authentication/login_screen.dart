@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone_v2/features/authentication/login_form_screen.dart';
 
 import '../../constants/gaps.dart';
 import '../../constants/sizes.dart';
@@ -43,6 +44,7 @@ class LoginScreen extends StatelessWidget {
               Gaps.v40,
               const AuthButton(
                 icon: FaIcon(FontAwesomeIcons.user),
+                widget: LoginFormScreen(),
                 text: "Use email & password",
               ),
               Gaps.v16,
