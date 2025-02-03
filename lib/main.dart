@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tiktok_clone_v2/features/authentication/sign_up_screen.dart';
-import 'package:tiktok_clone_v2/features/onboarding/interests_screen.dart';
+import 'package:tiktok_clone_v2/features/main_navigation/main_navigation_screen.dart';
 
 import 'constants/sizes.dart';
 
@@ -33,7 +33,7 @@ class TikTokApp extends StatelessWidget {
           primaryColor: const Color(0xFFE9435A),
           useMaterial3: true,
         ),
-        home: const InterestsScreen(),
+        home: const MainNavigation(),
       ),
     );
   }
