@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone_v2/features/videos/widgets/video_button.dart';
+import 'package:tiktok_clone_v2/features/videos/widgets/video_comments.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -69,7 +70,9 @@ class _VideoPostState extends State<VideoPost> with TickerProviderStateMixin {
     // 완전히 보이지 않는데 재생중이면 -> 멈춤
     // 완전히 보이지 않는데 재생중이 아니면 -> 멈춤 (keep going)
     // 완전히 보이는데 재생중이면 -> 재생 (keep going)
-    if (info.visibleFraction == 1 && !_videoPlayerController.value.isPlaying) {
+    if (info.visibleFraction == 1 &&
+        !_isPaused &&
+        !_videoPlayerController.value.isPlaying) {
       _videoPlayerController.play();
     } else if (info.visibleFraction != 1 &&
         _videoPlayerController.value.isPlaying) {
@@ -91,6 +94,17 @@ class _VideoPostState extends State<VideoPost> with TickerProviderStateMixin {
         _isPaused = false;
       });
     }
+  }
+
+  void _onCommentButtonTapped() async {
+    _onTogglePlay();
+    await showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (context) => const VideoComments(),
+      clipBehavior: Clip.hardEdge,
+    );
+    _onTogglePlay();
   }
 
   @override
@@ -182,9 +196,12 @@ class _VideoPostState extends State<VideoPost> with TickerProviderStateMixin {
                   text: "2.9M",
                 ),
                 Gaps.v24,
-                const VideoButton(
-                  icon: FontAwesomeIcons.solidComment,
-                  text: "33K",
+                GestureDetector(
+                  onTap: _onCommentButtonTapped,
+                  child: const VideoButton(
+                    icon: FontAwesomeIcons.solidComment,
+                    text: "33K",
+                  ),
                 ),
                 Gaps.v24,
                 const VideoButton(
