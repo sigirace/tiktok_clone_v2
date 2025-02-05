@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone_v2/features/main_navigation/stf_screen.dart';
 import 'package:tiktok_clone_v2/features/main_navigation/widgets/nav_tab.dart';
 import 'package:tiktok_clone_v2/features/main_navigation/widgets/post_video_button.dart';
+import 'package:tiktok_clone_v2/features/videos/video_timeline_screen.dart';
 
 import '../../constants/gaps.dart';
 import '../../constants/sizes.dart';
@@ -51,23 +52,23 @@ class _MainNavigationState extends State<MainNavigation> {
         children: [
           Offstage(
             offstage: _selectedIndex != 0,
-            child: screens.elementAt(0),
+            child: const VideoTimelineScreen(),
           ),
           Offstage(
             offstage: _selectedIndex != 1,
-            child: screens.elementAt(1),
+            child: Container(),
           ),
           Offstage(
             offstage: _selectedIndex != 2,
-            child: screens.elementAt(2),
+            child: Container(),
           ),
           Offstage(
             offstage: _selectedIndex != 3,
-            child: screens.elementAt(3),
+            child: Container(),
           ),
           Offstage(
             offstage: _selectedIndex != 4,
-            child: screens.elementAt(4),
+            child: Container(),
           ),
         ],
       ),
