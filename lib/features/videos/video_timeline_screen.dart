@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok_clone_v2/features/videos/widgets/video_post.dart';
+
+import '../../constants/sizes.dart';
 
 class VideoTimelineScreen extends StatefulWidget {
   const VideoTimelineScreen({super.key});
@@ -10,32 +13,23 @@ class VideoTimelineScreen extends StatefulWidget {
 class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
   int _itemCount = 5;
   final PageController _pageController = PageController();
-
-  List<Color> colors = [
-    Colors.blue,
-    Colors.red,
-    Colors.green,
-    Colors.orange,
-    Colors.teal,
-  ];
+  final Duration _scrollDuration = const Duration(milliseconds: 250);
+  final Curve _scrollCurve = Curves.linear;
 
   void _onPageChanged(int page) {
     _pageController.animateToPage(
       page,
-      duration: const Duration(milliseconds: 100),
-      curve: Curves.linear,
+      duration: _scrollDuration,
+      curve: _scrollCurve,
     );
     if (page == _itemCount - 1) {
       _itemCount += 5;
-      colors.addAll([
-        Colors.blue,
-        Colors.red,
-        Colors.green,
-        Colors.orange,
-        Colors.teal,
-      ]);
       setState(() {});
     }
+  }
+
+  void _onVideoFinished() {
+    return;
   }
 
   @override
@@ -44,15 +38,29 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
     super.dispose();
   }
 
+  Future<void> _onRefresh() async {
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _itemCount = 5;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-      controller: _pageController,
-      scrollDirection: Axis.vertical,
-      itemCount: colors.length,
-      onPageChanged: _onPageChanged,
-      itemBuilder: (context, index) => Container(
-        color: colors[index],
+    return RefreshIndicator(
+      onRefresh: () async {
+        await _onRefresh();
+      },
+      displacement: Sizes.size60,
+      child: PageView.builder(
+        controller: _pageController,
+        scrollDirection: Axis.vertical,
+        itemCount: _itemCount,
+        onPageChanged: _onPageChanged,
+        itemBuilder: (context, index) => VideoPost(
+          index: index,
+          onFinished: _onVideoFinished,
+        ),
       ),
     );
   }
