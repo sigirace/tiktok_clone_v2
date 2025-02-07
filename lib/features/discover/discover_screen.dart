@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../constants/gaps.dart';
 import '../../constants/sizes.dart';
 
 final List<String> _tabs = [
@@ -44,7 +45,67 @@ class DiscoverScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            for (var tab in _tabs) Center(child: Text(tab)),
+            GridView.builder(
+              itemCount: 10,
+              padding: const EdgeInsets.all(Sizes.size8),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 9 / 20,
+                mainAxisSpacing: Sizes.size20,
+                crossAxisSpacing: Sizes.size5,
+              ),
+              itemBuilder: (context, index) => Column(
+                children: [
+                  AspectRatio(
+                    aspectRatio: 9 / 16,
+                    child: FadeInImage.assetNetwork(
+                      placeholder: "assets/images/spider_wallpaper_1.jpeg",
+                      image:
+                          'https://i.pinimg.com/736x/64/cf/e8/64cfe81e4d0c27af546d5edcd6c15494.jpg',
+                      fit: BoxFit.cover,
+                      placeholderFit: BoxFit.cover,
+                    ),
+                  ),
+                  Gaps.v8,
+                  const Text(
+                    "This is a very long text that will be truncated, This is a very long text that will be truncated",
+                    style: TextStyle(
+                      fontSize: Sizes.size14,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Gaps.v8,
+                  Row(
+                    children: [
+                      const CircleAvatar(
+                        radius: Sizes.size12,
+                        backgroundImage: NetworkImage(
+                          "https://avatars.githubusercontent.com/u/31294995?v=4",
+                        ),
+                      ),
+                      Gaps.h4,
+                      const Expanded(
+                        child: Text(
+                          "My Avartar is very long text that will be truncated, My Avartar is very long text that will be truncated",
+                          style: TextStyle(
+                            fontSize: Sizes.size14,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      Gaps.h4,
+                      const Icon(
+                        Icons.more_vert,
+                        size: Sizes.size16,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            for (var tab in _tabs.skip(1)) Center(child: Text(tab)),
           ],
         ),
       ),

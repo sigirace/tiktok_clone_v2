@@ -67,6 +67,9 @@ flutter:
   assets:
     - assets/videos/jindol.mp4
     - assets/videos/drive.mp4
+    - assets/images/spider_wallpaper_1.jpeg
+    - assets/images/spider_wallpaper_2.jpeg
+    - assets/images/spider_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
