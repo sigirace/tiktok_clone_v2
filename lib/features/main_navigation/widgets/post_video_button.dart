@@ -6,7 +6,10 @@ import '../../../constants/sizes.dart';
 class PostVideoButton extends StatelessWidget {
   const PostVideoButton({
     super.key,
+    required this.selectedIndex,
   });
+
+  final int selectedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +45,13 @@ class PostVideoButton extends StatelessWidget {
           height: Sizes.size36,
           width: Sizes.size56,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: selectedIndex == 0 ? Colors.white : Colors.black,
             borderRadius: BorderRadius.circular(Sizes.size8),
           ),
-          child: const Center(
+          child: Center(
             child: FaIcon(
               FontAwesomeIcons.plus,
-              color: Colors.black,
+              color: selectedIndex == 0 ? Colors.black : Colors.white,
             ),
           ),
         ),
