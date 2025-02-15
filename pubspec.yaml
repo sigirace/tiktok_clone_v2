@@ -101,7 +101,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-
-dependency_overrides:
-  gallery_saver:
-    path: /Users/sigi/.pub-cache/hosted/pub.dev/gallery_saver-2.3.2/
