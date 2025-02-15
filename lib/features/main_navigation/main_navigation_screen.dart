@@ -4,6 +4,7 @@ import 'package:tiktok_clone_v2/features/discover/discover_screen.dart';
 import 'package:tiktok_clone_v2/features/main_navigation/widgets/nav_tab.dart';
 import 'package:tiktok_clone_v2/features/main_navigation/widgets/post_video_button.dart';
 import 'package:tiktok_clone_v2/features/users/user_profile_screen.dart';
+import 'package:tiktok_clone_v2/features/videos/video_recording_screen.dart';
 import 'package:tiktok_clone_v2/features/videos/video_timeline_screen.dart';
 import 'package:tiktok_clone_v2/inbox/inbox_screen.dart';
 
@@ -29,11 +30,7 @@ class _MainNavigationState extends State<MainNavigation> {
   void _onPostVideo() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => Scaffold(
-          appBar: AppBar(
-            title: const Text("Record Video"),
-          ),
-        ),
+        builder: (context) => const VideoRecordingScreen(),
         fullscreenDialog: true,
       ),
     );
