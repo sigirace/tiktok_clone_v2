@@ -70,6 +70,7 @@ class _VideoPostState extends State<VideoPost> with TickerProviderStateMixin {
     // 완전히 보이지 않는데 재생중이면 -> 멈춤
     // 완전히 보이지 않는데 재생중이 아니면 -> 멈춤 (keep going)
     // 완전히 보이는데 재생중이면 -> 재생 (keep going)
+    if (!mounted) return;
     if (info.visibleFraction == 1 &&
         !_isPaused &&
         !_videoPlayerController.value.isPlaying) {

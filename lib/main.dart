@@ -34,7 +34,7 @@ class TikTokApp extends StatelessWidget {
           primaryColor: const Color(0xFFE9435A),
           useMaterial3: true,
         ),
-        home: const ActivityScreen(),
+        home: const MainNavigation(),
       ),
     );
   }
